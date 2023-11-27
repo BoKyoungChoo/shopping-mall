@@ -1,5 +1,5 @@
 import { Container, Row } from "react-bootstrap";
-import Product from "../../components/product";
+import Product from "../components/product";
 import { Link } from "react-router-dom";
 
 const Main = () => {
