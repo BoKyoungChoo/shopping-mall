@@ -1,9 +1,10 @@
 import { Col, Container, Nav, Navbar, Row } from "react-bootstrap";
 import "./App.css";
-import { Routes, Route, Link, useNavigate, Outlet } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import Main from "./page";
 import Detail from "./page/detail";
 import Mypage from "./page/mypage";
+import Error from "./page/error";
 
 function App() {
   const navigate = useNavigate();
@@ -33,7 +34,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Main />} />
         <Route path="/detail" element={<Detail />} />
-        <Route path="/mypage" element={<Mypage />} />
+        <Route path="/mypage" element={<Mypage />}>
+          <Route path="point" element={<div>포인트내역</div>} />
+        </Route>
+        <Route path="*" element={<Error />} />
       </Routes>
     </div>
   );
