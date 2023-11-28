@@ -4,8 +4,6 @@ const Detail = ({ data }) => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  console.log(Number(id));
-
   if (data.length < id || isNaN(Number(id))) return <p>없는 상품입니다.</p>;
 
   return (
