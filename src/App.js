@@ -32,8 +32,8 @@ function App() {
       </Navbar>
 
       <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/detail" element={<Detail />} />
+        <Route path="/" element={<Main data={data} />} />
+        <Route path="/detail/:id" element={<Detail data={data} />} />
         <Route path="/mypage" element={<Mypage />}>
           <Route path="point" element={<div>포인트내역</div>} />
         </Route>
@@ -44,3 +44,20 @@ function App() {
 }
 
 export default App;
+
+const data = [
+  {
+    id: 0,
+    imgUrl:
+      "https://image.msscdn.net/images/goods_img/20210722/2037173/2037173_16976143519631_125.jpg",
+    name: "베이직 푸퍼",
+    price: 72910,
+  },
+  {
+    id: 1,
+    imgUrl:
+      "https://image.msscdn.net/images/goods_img/20210722/2037167/2037167_16941494688973_125.jpg",
+    name: "파스텔 푸퍼",
+    price: 52910,
+  },
+];
