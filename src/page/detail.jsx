@@ -1,11 +1,17 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 const Detail = ({ data }) => {
+  const [showNotice, setShowNotice] = useState(true);
+
   useEffect(() => {
-    setTimeout(() => {
-      console.log("할인 끝!");
+    const time = setTimeout(() => {
+      setShowNotice(false);
     }, 2000);
+
+    return () => {
+      clearTimeout(time);
+    };
   }, []);
 
   const { id } = useParams();
@@ -15,7 +21,9 @@ const Detail = ({ data }) => {
 
   return (
     <div>
-      <div className="alert alert-wraning">2초이내 구매시 할인</div>
+      {showNotice && (
+        <div className="alert alert-wraning">2초이내 구매시 할인</div>
+      )}
       <p>{data[id].name}</p>
       <p>{data[id].price}</p>
       <img src={data[id].imgUrl} />
