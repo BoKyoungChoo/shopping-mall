@@ -4,10 +4,16 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-let btnClickNum = 1;
-
+let btnClickNum = 2;
 const Main = ({ data }) => {
+  console.log(btnClickNum);
   const [dataList, setDataList] = useState(data);
+
+  useEffect(() => {
+    return () => {
+      btnClickNum = 2;
+    };
+  }, []);
 
   return (
     <>
@@ -22,14 +28,13 @@ const Main = ({ data }) => {
             );
           })}
         </Row>
-        {btnClickNum < 3 && (
+        {btnClickNum < 4 && (
           <button
+            type="button"
             onClick={() => {
               axios
                 .get(
-                  `https://codingapple1.github.io/shop/data${
-                    btnClickNum + 1
-                  }.json`
+                  `https://codingapple1.github.io/shop/data${btnClickNum}.json`
                 )
                 .then((data) => {
                   btnClickNum++;
