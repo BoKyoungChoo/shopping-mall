@@ -1,16 +1,19 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 
-const userName = createSlice({
-  name: "userName",
-  initialState: "추복영",
+const user = createSlice({
+  name: "user",
+  initialState: { name: "추복영", age: 27 },
   reducers: {
     nameChangeFn(state) {
-      return "추보경";
+      state.name = "추보경";
+    },
+    ageChangeFn(state) {
+      state.age = 20;
     },
   },
 });
 
-export const { nameChangeFn } = userName.actions;
+export const { nameChangeFn, ageChangeFn } = user.actions;
 
 const userPhoneNumber = createSlice({
   name: "userPhoneNumber",
@@ -23,11 +26,24 @@ const productList = createSlice({
     { id: 0, name: "White and Black", count: 2 },
     { id: 2, name: "Grey Yordan", count: 1 },
   ],
+  reducers: {
+    countUpdateFn(state, action) {
+      const index = state.findIndex((product) => {
+        return product.id === action.payload;
+      });
+      state[index].count++;
+    },
+    addItemFn(state, action) {
+      state.push(action.payload);
+    },
+  },
 });
+
+export const { countUpdateFn, addItemFn } = productList.actions;
 
 export default configureStore({
   reducer: {
-    userName: userName.reducer,
+    user: user.reducer,
     userPhoneNumber: userPhoneNumber.reducer,
     productList: productList.reducer,
   },

@@ -1,15 +1,27 @@
 import { useDispatch, useSelector } from "react-redux";
 
 import { Table } from "react-bootstrap";
-import { nameChangeFn } from "../store";
+import { ageChangeFn, countUpdateFn, nameChangeFn } from "../store";
 
 const Cart = () => {
-  const userName = useSelector((state) => state.userName);
+  const user = useSelector((state) => state.user);
+  //productList 왜 업데이트 안되지?
   const productList = useSelector((state) => state.productList);
+
   const dispatch = useDispatch();
 
   return (
     <div>
+      <p>
+        {user.name}의 장바구니({user.age})
+      </p>
+      <button
+        onClick={() => {
+          dispatch(ageChangeFn());
+        }}
+      >
+        버튼
+      </button>
       <Table>
         <thead>
           <tr>
@@ -29,7 +41,7 @@ const Cart = () => {
                 <td>
                   <button
                     onClick={() => {
-                      dispatch(nameChangeFn());
+                      dispatch(countUpdateFn(product.id));
                     }}
                   >
                     +

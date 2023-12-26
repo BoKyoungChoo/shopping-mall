@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Nav } from "react-bootstrap";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { addItemFn } from "../store";
+import { useDispatch, useSelector } from "react-redux";
 
 const Detail = ({ data }) => {
   const [showNotice, setShowNotice] = useState(true);
@@ -18,7 +20,10 @@ const Detail = ({ data }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [tab, setTab] = useState(0);
+  const dispatch = useDispatch();
+  const productList = useSelector((state) => state.productList);
 
+  console.log(productList);
   if (data.length < id || isNaN(Number(id))) return <p>없는 상품입니다.</p>;
 
   return (
@@ -32,6 +37,13 @@ const Detail = ({ data }) => {
         <img src={data[id].imgUrl} />
       </div>
       <div>
+        <button
+          onClick={() => {
+            dispatch(addItemFn({ id: id, name: data[id].name, count: 1 }));
+          }}
+        >
+          주문하기
+        </button>
         <Nav variant="tabs" defaultActiveKey="link0">
           <Nav.Item
             onClick={() => {
