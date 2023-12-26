@@ -1,10 +1,11 @@
 import { Col, Container, Nav, Navbar, Row } from "react-bootstrap";
 import "./App.css";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
-import Main from "./page";
-import Detail from "./page/detail";
-import Mypage from "./page/mypage";
-import Error from "./page/error";
+import Main from "./page/Main";
+import Detail from "./page/Detail";
+import Mypage from "./page/Mypage";
+import Error from "./page/Error";
+import Cart from "./page/Cart";
 
 function App() {
   const navigate = useNavigate();
@@ -36,6 +37,7 @@ function App() {
           <Route path="point" element={<div>포인트내역</div>} />
         </Route>
         <Route path="*" element={<Error />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </div>
   );
