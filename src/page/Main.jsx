@@ -7,7 +7,6 @@ import { useEffect, useState } from "react";
 let btnClickNum = 2;
 
 const Main = ({ data }) => {
-  console.log(btnClickNum);
   const [dataList, setDataList] = useState(data);
 
   useEffect(() => {

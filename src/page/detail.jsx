@@ -23,7 +23,14 @@ const Detail = ({ data }) => {
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
 
-  console.log(productList);
+  const watchedArr = localStorage.getItem("watched")
+    ? JSON.parse(localStorage.getItem("watched"))
+    : [];
+
+  watchedArr.push(id);
+  localStorage.setItem("watched", JSON.stringify(watchedArr));
+  //중복 값 제거해보기
+
   if (data.length < id || isNaN(Number(id))) return <p>없는 상품입니다.</p>;
 
   return (
