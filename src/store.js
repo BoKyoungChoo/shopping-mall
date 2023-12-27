@@ -34,6 +34,8 @@ const productList = createSlice({
       state[index].count++;
     },
     addItemFn(state, action) {
+      if (state.find((e) => e.id === action.payload.id))
+        return alert("이미 담겨져 있는 상품입니다");
       state.push(action.payload);
     },
   },
