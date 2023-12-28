@@ -12,6 +12,12 @@ const Detail = ({ data }) => {
       setShowNotice(false);
     }, 2000);
 
+    const watchedArr = localStorage.getItem("watched")
+      ? JSON.parse(localStorage.getItem("watched"))
+      : [];
+    if (!watchedArr.includes(id)) watchedArr.push(id);
+    localStorage.setItem("watched", JSON.stringify(watchedArr));
+
     return () => {
       clearTimeout(time);
     };
@@ -23,34 +29,27 @@ const Detail = ({ data }) => {
   const dispatch = useDispatch();
   const productList = useSelector((state) => state.productList);
 
-  const watchedArr = localStorage.getItem("watched")
-    ? JSON.parse(localStorage.getItem("watched"))
-    : [];
-
-  watchedArr.push(id);
-  localStorage.setItem("watched", JSON.stringify(watchedArr));
-  //중복 값 제거해보기
-
   if (data.length < id || isNaN(Number(id))) return <p>없는 상품입니다.</p>;
 
   return (
     <>
       <div>
-        {showNotice && (
-          <div className="alert alert-wraning">2초이내 구매시 할인</div>
-        )}
         <p>{data[id].name}</p>
         <p>{data[id].price}</p>
         <img src={data[id].imgUrl} />
       </div>
+      <button
+        onClick={() => {
+          dispatch(addItemFn({ id: id, name: data[id].name, count: 1 }));
+        }}
+      >
+        주문하기
+      </button>
+
+      {showNotice && (
+        <div className="alert alert-wraning">2초이내 구매시 할인</div>
+      )}
       <div>
-        <button
-          onClick={() => {
-            dispatch(addItemFn({ id: id, name: data[id].name, count: 1 }));
-          }}
-        >
-          주문하기
-        </button>
         <Nav variant="tabs" defaultActiveKey="link0">
           <Nav.Item
             onClick={() => {

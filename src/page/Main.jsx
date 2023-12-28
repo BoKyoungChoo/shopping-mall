@@ -18,14 +18,10 @@ const Main = ({ data }) => {
   return (
     <>
       <div className="main-bg"></div>
-      <Container>
+      <Container className="mt-5">
         <Row>
           {dataList.map((info) => {
-            return (
-              <Link key={info.name ?? info.title} to={`/detail/${info.id}`}>
-                <Product data={info} />
-              </Link>
-            );
+            return <Product key={info.name ?? info.title} data={info} />;
           })}
         </Row>
         {btnClickNum < 4 && (
