@@ -2,12 +2,14 @@ import { Col, Container, Nav, Navbar, Placeholder, Row } from "react-bootstrap";
 import "./App.css";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import Main from "./page/Main";
-import Detail from "./page/Detail";
-import Mypage from "./page/Mypage";
 import Error from "./page/Error";
-import Cart from "./page/Cart";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import { lazy } from "react";
+
+const Detail = lazy(() => import("./page/Mypage"));
+const Cart = lazy(() => import("./page/Cart"));
+const Mypage = lazy(() => import("./page/Mypage"));
 
 function App() {
   const navigate = useNavigate();
@@ -18,7 +20,6 @@ function App() {
       return axios
         .get("https://codingapple1.github.io/userdata.json")
         .then((data) => {
-          console.log(data);
           return data.data;
         });
     },
