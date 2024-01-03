@@ -18,7 +18,6 @@ function App() {
       return axios
         .get("https://codingapple1.github.io/userdata.json")
         .then((data) => {
-          console.log(data);
           return data.data;
         });
     },

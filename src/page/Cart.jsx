@@ -2,16 +2,30 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Table } from "react-bootstrap";
 import { ageChangeFn, countUpdateFn, nameChangeFn } from "../store";
+import { memo, useState } from "react";
+
+const Child = memo(() => {
+  console.log("렌더");
+  return <div>자식</div>;
+});
 
 const Cart = () => {
   const user = useSelector((state) => state.user);
-  //productList 왜 업데이트 안되지?
   const productList = useSelector((state) => state.productList);
 
+  const [test, setTest] = useState(0);
   const dispatch = useDispatch();
 
   return (
     <div>
+      <Child />
+      <button
+        onClick={() => {
+          setTest((prev) => (prev += 1));
+        }}
+      >
+        test
+      </button>
       <p>
         {user.name}의 장바구니({user.age})
       </p>
