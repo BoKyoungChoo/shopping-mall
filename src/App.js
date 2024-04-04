@@ -2,7 +2,7 @@ import { Col, Container, Nav, Navbar, Placeholder, Row } from "react-bootstrap";
 import "./App.css";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import Main from "./page/Main";
-import Error from "./page/Error";
+// import Error from "./page/Error";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { lazy } from "react";
