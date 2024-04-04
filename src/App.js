@@ -68,10 +68,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Main data={products} />} />
         {/* <Route path="/detail/:id" element={<Detail data={products} />} /> */}
-        <Route path="/mypage" element={<Mypage />}>
-          <Route path="point" element={<div>포인트내역</div>} />
-        </Route>
-        <Route path="*" element={<Error />} />
+        {/* <Route path="/mypage" element={<Mypage />}> */}
+        <Route path="point" element={<div>포인트내역</div>} />
+        {/* </Route> */}
+        {/* <Route path="*" element={<Error />} /> */}
         <Route path="/cart" element={<Cart />} />
       </Routes>
     </div>
