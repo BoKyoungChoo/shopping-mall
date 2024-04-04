@@ -7,7 +7,7 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { lazy } from "react";
 
-const Detail = lazy(() => import("./page/Mypage"));
+// const Detail = lazy(() => import("./page/Mypage"));
 const Cart = lazy(() => import("./page/Cart"));
 const Mypage = lazy(() => import("./page/Mypage"));
 
@@ -67,7 +67,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Main data={products} />} />
-        <Route path="/detail/:id" element={<Detail data={products} />} />
+        {/* <Route path="/detail/:id" element={<Detail data={products} />} /> */}
         <Route path="/mypage" element={<Mypage />}>
           <Route path="point" element={<div>포인트내역</div>} />
         </Route>
