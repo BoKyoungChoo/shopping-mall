@@ -9,7 +9,7 @@ import { lazy } from "react";
 
 // const Detail = lazy(() => import("./page/Mypage"));
 const Cart = lazy(() => import("./page/Cart"));
-const Mypage = lazy(() => import("./page/Mypage"));
+// const Mypage = lazy(() => import("./page/Mypage"));
 
 function App() {
   const navigate = useNavigate();
