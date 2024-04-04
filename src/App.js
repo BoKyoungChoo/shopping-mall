@@ -2,14 +2,14 @@ import { Col, Container, Nav, Navbar, Placeholder, Row } from "react-bootstrap";
 import "./App.css";
 import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import Main from "./page/Main";
-import Error from "./page/Error";
+// import Error from "./page/Error";
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { lazy } from "react";
 
 // const Detail = lazy(() => import("./page/Mypage"));
 const Cart = lazy(() => import("./page/Cart"));
-const Mypage = lazy(() => import("./page/Mypage"));
+// const Mypage = lazy(() => import("./page/Mypage"));
 
 function App() {
   const navigate = useNavigate();
@@ -68,10 +68,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Main data={products} />} />
         {/* <Route path="/detail/:id" element={<Detail data={products} />} /> */}
-        <Route path="/mypage" element={<Mypage />}>
-          <Route path="point" element={<div>포인트내역</div>} />
-        </Route>
-        <Route path="*" element={<Error />} />
+        {/* <Route path="/mypage" element={<Mypage />}> */}
+        <Route path="point" element={<div>포인트내역</div>} />
+        {/* </Route> */}
+        {/* <Route path="*" element={<Error />} /> */}
         <Route path="/cart" element={<Cart />} />
       </Routes>
     </div>

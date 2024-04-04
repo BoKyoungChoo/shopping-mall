@@ -2,10 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { Table } from "react-bootstrap";
 import { ageChangeFn, countUpdateFn, nameChangeFn } from "../store";
+import { memo, useState } from "react";
+import { flushSync } from "react-dom";
 
 const Cart = () => {
   const user = useSelector((state) => state.user);
-  //productList 왜 업데이트 안되지?
   const productList = useSelector((state) => state.productList);
 
   const dispatch = useDispatch();
